@@ -1,0 +1,20 @@
+{
+  "name": "roundtable",
+  "version": "0.0.0",
+  "description": "Centralised coordination for Knights of the Button",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reddit",
+    "button"
+  ],
+  "author": "@twombh",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.5.3",
+    "express": "^4.12.3",
+    "ws": "^0.7.1"
+  }
+}
