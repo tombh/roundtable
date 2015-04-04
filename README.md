@@ -13,7 +13,7 @@ button, thus minimising the risk of duplicate clicks.
 The socket server is currently deployed to Heroku: http://theroundtable.herokuapp.com
 
 ##Usage
-Goto http://reddit.com/thebutton and paste the following code into your address bar. You can even save it as a bookmarklet.
+Goto http://reddit.com/r/thebutton and paste the following code into your address bar. You can even save it as a bookmarklet.
 
 ```
 javascript:(function (){document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='http://theroundtable.herokuapp.com/bookmarklet.js?'+Math.random();}());
