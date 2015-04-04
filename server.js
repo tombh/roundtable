@@ -1,11 +1,11 @@
-var WebSocketServer = require('ws').Server,
-    http            = require('http'),
-    express         = require('express'),
-    f               = require('./inc/functions.js'),
-    app             = express(),
-    server          = http.createServer(app),
-    wss             = new WebSocketServer({server: server}),
-    port            = process.argv.splice(2)[0] || f.getConfig().httpPort || 1337;
+var VERSION = '0.0.0'
+
+var http    = require('http'),
+    express = require('express'),
+    app     = express(),
+    server  = http.createServer(app),
+    f       = require('./inc/functions.js'),
+    port    = f.getConfig().httpPort;
 
 //Output the console ASCII art
 f.ascii(f);
@@ -17,9 +17,9 @@ f.setupLumberJack(f);
 f.enableMiddleware(app);
 
 //Deals with routing and general logic
-f.handleWebsockets(wss);
+f.handleWebsockets(server);
 
 //Start the HTTP server on the port specified, defaults to 1337
 server.listen(port, function () {
-    f.getLumberJack().info("[Instance]".red + " RoundTable is listening at wss://" + f.getConfig().httpHost + ":" + String(port).rainbow);
+  f.getLumberJack().info("Listening at wss://" + f.getConfig().httpHost + ":" + String(port).rainbow);
 });

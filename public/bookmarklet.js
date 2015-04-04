@@ -1,10 +1,14 @@
+/**
+ * This code is run by the browser
+**/
+
 var VERSION = '0.0.0'
 
 // Switch where the host server is depending on development/production environment
 // Use http://reddit.com/r/thebutton?local to load the bookmarket from your local machine
 var urlQuery = window.location.search.replace("?", "");
-if( urlQuery == 'local'){
-  host = 'localhost:5000'
+if (urlQuery == 'local') {
+  host = 'localhost:1337'
 } else {
   host = 'theroundtable.herokuapp.com'
 }
@@ -12,8 +16,10 @@ if( urlQuery == 'local'){
 // Open a streaming socket connection to our Round Table server
 var ws = new WebSocket('ws://' + host);
 
+// An underscore template for our widget
 var template;
 
+// Inject our stylesheet
 var css = 'http://' + host + '/styles.css';
 $('head').append('<link rel="stylesheet" type="text/css" href="' + css + '">');
 
@@ -24,14 +30,14 @@ $('.thebutton-form').append(div);
 
 var username = $('#header .user > a').text()
 
-function sendCommand(command, json){
+function sendCommand(command, json) {
   json['version'] = VERSION // So we know when to update the bookmarklet
   json['command'] = command
   data = JSON.stringify(json)
   ws.send(data)
 }
 
-function main(){
+function main() {
   // When first connecting send details about the knight
   sendCommand('RECRUIT', {
     username: username
@@ -41,19 +47,31 @@ function main(){
   ws.onmessage = function(event) {
     json = JSON.parse(event.data)
     console.log(json)
+
     $('.thebutton-form .round-table').html(
       template(json)
     );
+
+    if (username == json.knights[json.on_the_watch]) {
+      $('#on-the-watch').append('&nbsp;(<button onclick="return passTheWatch()">Pass</button>)')
+    }
   };
+}
+
+function passTheWatch() {
+  sendCommand('WATCH_PASS', {
+    username: username
+  });
+  return false;
 }
 
 // Fetch the template for the embedded HTML
 $.ajax({
-	url: 'http://' + host + '/embedded.html',
-	method: 'GET',
-	dataType: 'html',
-	success: function(data) {
-		template = _.template(data);
+  url: 'http://' + host + '/embedded.html',
+  method: 'GET',
+  dataType: 'html',
+  success: function(data) {
+    template = _.template(data);
     main();
-	}
+  }
 });
