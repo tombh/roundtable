@@ -41,10 +41,22 @@ function main(){
   ws.onmessage = function(event) {
     json = JSON.parse(event.data)
     console.log(json)
+
     $('.thebutton-form .round-table').html(
       template(json)
     );
+
+    if(username == json.knights[json.on_the_watch]) {
+      $('#on-the-watch').append('&nbsp;(<button onclick="return passTheWatch()">Pass</button>)')
+    }
   };
+}
+
+function passTheWatch() {
+  sendCommand('WATCH_PASS', {
+    username: username
+  });
+  return false;
 }
 
 // Fetch the template for the embedded HTML

@@ -8,7 +8,7 @@ If the centralised server knows all the available knights then it can pick just 
 button, thus minimising the risk of duplicate clicks.
 
 
-![](http://i.imgur.com/2Sw0NB0.jpg)
+![](http://i.imgur.com/hWmT6YV.png)
 
 The socket server is currently deployed to Heroku: http://theroundtable.herokuapp.com
 

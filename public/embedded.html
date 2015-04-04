@@ -1,9 +1,15 @@
-<h1>
-  the round table
-</h1>
+<div>
+	<h1>
+	  The Round Table
+	</h1>
+	<h2>On The Watch</h2>
+	<strong id="on-the-watch" style="font-weight: bold;"><%= knights[on_the_watch] %></strong>
+	<br/><br/>
 
-<ul>
-  <% _.each(knights, function(knight, connectionID){ %>
-    <%= knight %>,&nbsp;
-  <% }) %>
-</ul>
+	<h2>At The Table</h2>
+	<p>
+	  <% _.each(knights, function(knight, connectionID){ %>
+	    <%= knight %>, &nbsp;
+	  <% }) %>
+	</p>
+</div>
