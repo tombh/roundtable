@@ -1,7 +1,5 @@
 # Created by https://www.gitignore.io
 
-config/config.js
-
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -79,4 +77,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
