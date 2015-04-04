@@ -6,7 +6,7 @@ var urlQuery = window.location.search.replace("?", "");
 if( urlQuery == 'local'){
   host = 'localhost:5000'
 } else {
-  host = 'roundtable.herokuapp.com'
+  host = 'theroundtable.herokuapp.com'
 }
 
 // Open a streaming socket connection to our Round Table server
