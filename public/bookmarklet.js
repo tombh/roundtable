@@ -39,9 +39,11 @@ function sendCommand(command, json) {
 
 function main() {
   // When first connecting send details about the knight
-  sendCommand('RECRUIT', {
-    username: username
-  })
+  ws.onopen = function () {
+    sendCommand('RECRUIT', {
+      username: username
+    })
+  };
 
   // Whenever there's new data, re-render the template
   ws.onmessage = function(event) {
