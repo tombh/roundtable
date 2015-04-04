@@ -10,7 +10,7 @@ button, thus minimising the risk of duplicate clicks.
 The socket server is currently deployed to Heroku: http://theroundtable.herokuapp.com
 
 ##Usage
-Drag <a href="(javascript:(function (){document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='http://theroundtable.herokuapp.com/bookmarklet.js?'+Math.random();}());">this link</a> to your bookmark toolbar. Then goto http://reddit.com/r/thebutton and click the bookmark. You should see something like the following:
+Drag [this link][1] to your bookmark toolbar. Then goto http://reddit.com/r/thebutton and click your bookmark. You should see something like the following:
 
 ![](http://i.imgur.com/hWmT6YV.png)
 
@@ -29,3 +29,6 @@ javascript:(function (){document.getElementsByTagName('head')[0].appendChild(doc
 
 ##Disclaimer
 This code will never do anything mean to you. But please do check the code for yourself.
+
+
+[1]:javascript:(function(){document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='http://theroundtable.herokuapp.com/bookmarklet.js?'+Math.random();}());
